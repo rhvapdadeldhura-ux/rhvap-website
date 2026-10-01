@@ -110,7 +110,94 @@ table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid 
 <div class="file-status" aria-live="polite"></div>
 </div>
 </div></section>
-<div class="section"><button class="btn" type="button" onclick="window.print()">प्रिन्ट / PDF बनाउनुहोस्</button><p class="note">हाल यो फारमको प्रिन्ट/PDF सुविधा छ। अनलाइनबाट कार्यालयमा आवेदन पठाउने/सुरक्षित गर्ने सुविधा जोड्न response backend वा form service आवश्यक हुन्छ।</p></div>
+<div class="section" id="submit-area">
+<button class="btn" type="button" id="sendApplication">आवेदन पेश गर्नुहोस्</button>
+<button class="btn alt" type="button" onclick="window.print()">प्रिन्ट / PDF बनाउनुहोस्</button>
+<p id="submitStatus" class="note" aria-live="polite">फारम भरेपछि आवेदन पेश गर्नुहोस्।</p>
+<iframe name="gasResultFrame" title="आवेदन पठाउने नतिजा"
+style="width:100%;height:190px;border:1px solid #ddd;border-radius:6px"></iframe>
+</div>
+<script>
+const GAS_URL = "https://script.google.com/macros/s/AKfycbyMUZvaxlE6Ec68MvBSdt51pX2Kw0MLXkM1TmR3sC1Una17hzJ4d9AD-JdRegbmD24K/exec";
+const MAX_FILE = 2 * 1024 * 1024;
+const MAX_TOTAL = 8 * 1024 * 1024;
+
+function readAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1]);
+    reader.onerror = () => reject(new Error("फाइल पढ्न सकिएन: " + file.name));
+    reader.readAsDataURL(file);
+  });
+}
+function addField(fields, name, value) {
+  if (Object.prototype.hasOwnProperty.call(fields, name)) {
+    if (!Array.isArray(fields[name])) fields[name] = [fields[name]];
+    fields[name].push(value);
+  } else fields[name] = value;
+}
+document.getElementById("sendApplication").addEventListener("click", async function() {
+  const button = this;
+  const status = document.getElementById("submitStatus");
+  if (!GAS_URL.startsWith("https://script.google.com/macros/s/") || !GAS_URL.endsWith("/exec")) {
+    status.textContent = "पहिले GAS_URL मा आफ्नो Apps Script Web App को /exec URL राख्नुहोस्।";
+    return;
+  }
+  button.disabled = true;
+  status.textContent = "फारम र फाइल जाँच हुँदैछ...";
+  try {
+    const fields = {};
+    document.querySelectorAll("input[name], textarea[name], select[name]").forEach(el => {
+      if (el.type === "file") return;
+      if (el.type === "checkbox") {
+        if (el.checked) addField(fields, el.name, el.value || true);
+        return;
+      }
+      if (el.type === "radio" && !el.checked) return;
+      addField(fields, el.name, el.value);
+    });
+    const fileInputs = Array.from(document.querySelectorAll('input[type="file"][data-upload]'));
+    const chosen = fileInputs.flatMap(input => Array.from(input.files || []).map(file => ({file, input})));
+    let total = 0;
+    chosen.forEach(({file}) => {
+      total += file.size;
+      if (file.size > MAX_FILE) throw new Error(file.name + " २ MB भन्दा ठूलो छ।");
+      if (!/\.(pdf|jpg|jpeg|png)$/i.test(file.name)) throw new Error(file.name + " को फाइल प्रकार मिलेन।");
+    });
+    if (total > MAX_TOTAL) throw new Error("सबै फाइलको जम्मा आकार ८ MB भन्दा कम हुनुपर्छ।");
+
+    status.textContent = "फाइलहरू तयार हुँदैछन्...";
+    const files = [];
+    for (const {file} of chosen) {
+      let type = file.type;
+      if (!type) type = /\.pdf$/i.test(file.name) ? "application/pdf" :
+        /\.(jpg|jpeg)$/i.test(file.name) ? "image/jpeg" : "image/png";
+      if (!["application/pdf", "image/jpeg", "image/png"].includes(type)) {
+        throw new Error(file.name + " को प्रकार PDF, JPG वा PNG हुनुपर्छ।");
+      }
+      files.push({name:file.name, type, base64:await readAsBase64(file)});
+    }
+    const payload = JSON.stringify({fields, files});
+    const postForm = document.createElement("form");
+    postForm.method = "POST";
+    postForm.action = GAS_URL;
+    postForm.target = "gasResultFrame";
+    const hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = "payload";
+    hidden.value = payload;
+    postForm.appendChild(hidden);
+    document.body.appendChild(postForm);
+    status.textContent = "आवेदन पठाइँदैछ। कृपया पेज नबन्द गर्नुहोस्...";
+    postForm.submit();
+    postForm.remove();
+    button.disabled = false;
+  } catch (err) {
+    status.textContent = "त्रुटि: " + err.message;
+    button.disabled = false;
+  }
+});
+</script>
 </main><footer>व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन<br>rhvap.sp@gmail.com</footer>
 <script>
 (function(){
