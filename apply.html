@@ -139,9 +139,10 @@ function addField(fields, name, value) {
 document.getElementById("sendApplication").addEventListener("click", async function() {
   const button = this;
   const status = document.getElementById("submitStatus");
-  if (!GAS_URL.startsWith("https://script.google.com/macros/s/") || !GAS_URL.endsWith("/exec")) {
-    status.textContent = "पहिले GAS_URL मा आफ्नो Apps Script Web App को /exec URL राख्नुहोस्।";
-    return;
+  if (!GAS_URL || GAS_URL.includes("PASTE_YOUR_WEB_APP_URL_HERE")) {
+  status.textContent = "GAS_URL राखिएको छैन।";
+  return;
+}
   }
   button.disabled = true;
   status.textContent = "फारम र फाइल जाँच हुँदैछ...";
