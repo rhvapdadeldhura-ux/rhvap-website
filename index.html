@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R-HVAP | कार्यक्रम व्यवस्थापन कार्यालय</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans Devanagari",
+                   "Mangal", sans-serif;
+      color: #17345f;
+      background: #ffffff;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: #08469b;
+      color: white;
+      padding: 9px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      gap: 12px;
+    }
+
+    .topbar-right {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .english {
+      background: #d71940;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 16px;
+      font-size: 14px;
+    }
+
+    /* Header */
+    .header {
+      max-width: 1450px;
+      margin: auto;
+      padding: 24px 8%;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .logo {
+      width: 105px;
+      height: 105px;
+      border: 2px solid #e4e8ef;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #08469b;
+      font-size: 14px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .office h2 {
+      margin: 0 0 4px;
+      font-size: 25px;
+      font-weight: 600;
+      color: #12458e;
+    }
+
+    .office h1 {
+      margin: 0 0 4px;
+      font-size: 29px;
+      font-weight: 600;
+      color: #d71940;
+    }
+
+    .office p {
+      margin: 0;
+      font-size: 21px;
+      color: #12458e;
+    }
+
+    .red-line {
+      height: 5px;
+      background: #d71940;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1450px;
+      margin: auto;
+      padding: 40px 8% 65px;
+    }
+
+    .main-title {
+      text-align: center;
+      color: #d71940;
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 10px;
+      line-height: 1.6;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #555;
+      font-size: 19px;
+      margin: 0 0 48px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      min-height: 280px;
+      border: 2px solid #d9dee6;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px 15px;
+      background: #fff;
+    }
+
+    .card:first-child {
+      border-color: #d71940;
+      background: #fffafb;
+    }
+
+    .card-icon {
+      font-size: 55px;
+      margin-bottom: 18px;
+    }
+
+    .card h2 {
+      color: #d71940;
+      font-size: 27px;
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #12458e;
+      font-size: 19px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #08469b;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .topbar {
+        padding: 10px 4%;
+        flex-wrap: wrap;
+      }
+
+      .topbar-right {
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .header {
+        padding: 20px 5%;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 75px;
+        height: 75px;
+        font-size: 11px;
+      }
+
+      .office h2 {
+        font-size: 17px;
+      }
+
+      .office h1 {
+        font-size: 20px;
+      }
+
+      .office p {
+        font-size: 15px;
+      }
+
+      main {
+        padding: 30px 5% 45px;
+      }
+
+      .main-title {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 190px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .topbar {
+        font-size: 12px;
+      }
+
+      .topbar-right {
+        font-size: 11px;
+      }
+
+      .office h2 {
+        font-size: 15px;
+      }
+
+      .office h1 {
+        font-size: 17px;
+      }
+
+      .office p {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div>सुदूरपश्चिम प्रदेश सरकार</div>
+    <div class="topbar-right">
+      <span>☎ ०९६-४२०१२१</span>
+      <span>✉ rhvap.sp@gmail.com</span>
+      <button class="english">English</button>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="logo">R-HVAP<br>LOGO</div>
+
+    <div class="office">
+      <h2>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h2>
+      <h1>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</h1>
+      <p>कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p>
+    </div>
+  </header>
+
+  <div class="red-line"></div>
+
+  <main>
+    <h1 class="main-title">
+      लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम
+    </h1>
+
+    <p class="subtitle">
+      कृषि तथा कृषि व्यवसाय प्रवर्द्धन
+    </p>
+
+    <section class="cards">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h2>अनलाइन आवेदन</h2>
+        <p>Online Application</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <h2>सूचना</h2>
+        <p>Notice</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h2>आवेदन फाराम</h2>
+        <p>Application Form</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>“व्यवसायिक र सृजनशील प्रशासन: विकास, समृद्धि र सुशासन”</p>
+    <p>rhvap.sp@gmail.com</p>
+    <p>कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p>
+  </footer>
+
+</body>
+</html>
