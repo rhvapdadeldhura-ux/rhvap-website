@@ -56,18 +56,20 @@
     }
 
     .logo {
-      width: 105px;
-      height: 105px;
-      border: 2px solid #e4e8ef;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #08469b;
-      font-size: 14px;
-      text-align: center;
-      flex-shrink: 0;
-    }
+  width: 125px;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 
     .office h2 {
       margin: 0 0 4px;
@@ -254,6 +256,45 @@
         font-size: 13px;
       }
     }
+.logo {
+  width: 105px;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+.logo {
+  width: 105px;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 50%;
+}
+.topbar a,
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.topbar a:hover,
+footer a:hover {
+  text-decoration: underline;
+}
   </style>
 </head>
 
@@ -261,15 +302,20 @@
 
   <div class="topbar">
     <div>सुदूरपश्चिम प्रदेश सरकार</div>
-    <div class="topbar-right">
-      <span>☎ ०९६-४२०१२१</span>
-      <span>✉ rhvap.sp@gmail.com</span>
-      <button class="english">English</button>
-    </div>
+    
+<div class="topbar-right">
+  <a href="tel:096590929">☎ ०९६-५९०९२९</a>
+  <a href="mailto:rhvap.sp@gmail.com">
+    ✉ rhvap.sp@gmail.com
+  </a>
+  <button class="english">English</button>
+</div>
   </div>
 
   <header class="header">
-    <div class="logo">R-HVAP<br>LOGO</div>
+    <div class="logo">
+  <img src="gov-logo.png" alt="सुदूरपश्चिम प्रदेश सरकारको लोगो">
+</div>
 
     <div class="office">
       <h2>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h2>
@@ -310,11 +356,25 @@
     </section>
   </main>
 
-  <footer>
-    <p>“व्यवसायिक र सृजनशील प्रशासन: विकास, समृद्धि र सुशासन”</p>
-    <p>rhvap.sp@gmail.com</p>
-    <p>कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p>
-  </footer>
+  
+<footer>
+  <p>व्यवसायीक र सृजनशील प्रशासन:
+     विकास, समृद्धि र शुसासन</p>
+
+  <p>
+    <a href="mailto:rhvap.sp@gmail.com">
+      rhvap.sp@gmail.com
+    </a>
+    |
+    <a href="https://pmorhvap.sudurpashchim.gov.np/"
+       target="_blank"
+       rel="noopener noreferrer">
+      pmorhvap.sudurpashchim.gov.np
+    </a>
+  </p>
+
+  
+</footer>
 
 </body>
 </html>
