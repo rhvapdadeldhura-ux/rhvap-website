@@ -118,7 +118,7 @@ table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid 
 style="width:100%;height:190px;border:1px solid #ddd;border-radius:6px"></iframe>
 </div>
 <script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbyMUZvaxlE6Ec68MvBSdt51pX2Kw0MLXkM1TmR3sC1Una17hzJ4d9AD-JdRegbmD24K/exec";
+const GAS_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
 const MAX_FILE = 2 * 1024 * 1024;
 const MAX_TOTAL = 8 * 1024 * 1024;
 
@@ -209,7 +209,7 @@ document.getElementById("sendApplication").addEventListener("click", async funct
       status.className = 'file-status';
       const file = input.files && input.files[0];
       if(!file) return;
-      const allowed = /\\.(jpg|jpeg|png|pdf)$/i.test(file.name);
+      const allowed = /\.(jpg|jpeg|png|pdf)$/i.test(file.name);
       if(!allowed){
         input.value = '';
         status.textContent = 'गलत फाइल प्रकार। JPG, JPEG, PNG वा PDF मात्र छान्नुहोस्।';
