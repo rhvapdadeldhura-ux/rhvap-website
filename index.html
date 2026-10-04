@@ -1,45 +1,179 @@
 <!DOCTYPE html>
-
 <html lang="ne">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R-HVAP | कार्यक्रम व्यवस्थापन कार्यालय</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;color:#17345f;background:#f7f8fa}
-.topbar{background:#08469b;color:#fff;padding:7px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px}
-.topbar-right{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.topbar a,footer a{color:#fff;text-decoration:none}
-.english{background:#d71940;color:#fff;border:1px solid #fff;padding:4px 12px}
-.header{max-width:1200px;margin:auto;padding:16px 5%;display:flex;align-items:center;gap:18px;background:#fff}
-.logo{width:68px;height:68px;flex-shrink:0;overflow:hidden;border-radius:50%}.logo img{width:100%;height:100%;object-fit:contain}
-.office h2{font-size:18px;color:#12458e;margin:0 0 3px}.office h1{font-size:21px;color:#d71940;margin:0 0 3px}.office p{font-size:15px;margin:0}
-.red-line{height:4px;background:#d71940}
-nav{background:#d71940;color:#fff;display:flex;justify-content:center;gap:0;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;padding:12px 22px;font-size:14px}nav a:hover,nav a.active{background:#08469b}
-main{max-width:1050px;margin:26px auto;padding:0 18px 45px}.main-title{text-align:center;color:#12458e;font-size:24px;margin:0 0 8px}.subtitle{text-align:center;color:#666;margin:0 0 28px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:white;border:1px solid #d9dee6;border-radius:8px;box-shadow:0 2px 8px #0000000b;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;text-decoration:none;color:#12458e;transition:.15s}.card:hover{border-color:#d71940;transform:translateY(-2px)}.card:first-child{border:2px solid #d71940;background:#fffafb}.card-icon{font-size:42px;margin-bottom:12px}.card h2{color:#d71940;font-size:22px;margin:0 0 8px}.card p{margin:0;font-weight:bold}
-footer{background:#08469b;color:white;text-align:center;padding:22px 12px;font-size:14px;line-height:1.8}footer p{margin:4px}
-@media(max-width:700px){.topbar{padding:8px 4%;font-size:11px}.topbar-right{gap:8px}.header{padding:14px 4%;gap:12px}.logo{width:54px;height:54px}.office h2{font-size:14px}.office h1{font-size:16px}.office p{font-size:12px}nav a{padding:10px 12px;font-size:12px}.cards{grid-template-columns:1fr;gap:14px}.card{min-height:140px}.main-title{font-size:20px}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;color:#17345f;background:#fff}
+
+/* Top contact bar — matches the supplied screenshot */
+.topbar{
+  height:55px;background:#08469b;color:#fff;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 5.5%;gap:18px;font-size:18px;
+}
+.topbar a{color:#fff;text-decoration:none;white-space:nowrap}
+.lang-btn{
+  background:#d71940;color:#fff;border:1px solid #fff;
+  border-radius:5px;padding:6px 18px;font-size:17px;
+  font-family:inherit;cursor:pointer;line-height:1.2
+}
+.lang-btn:hover{background:#b91537}
+
+/* Main institutional header */
+.header{
+  text-align:center;background:#fff;
+  padding:42px 20px 34px;
+}
+.logo{
+  width:125px;height:125px;margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+}
+.logo img{width:100%;height:100%;object-fit:contain}
+.header h2{
+  margin:0 0 10px;font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;color:#4a4a4a;font-weight:700;
+}
+.header h1{
+  margin:0 0 10px;font-family:Georgia,"Times New Roman",serif;
+  font-size:29px;color:#08469b;font-weight:700;
+}
+.header p{
+  margin:0;font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;color:#08469b;font-weight:700;
+}
+.red-line{height:6px;background:#d71940;width:100%}
+
+main{padding:46px 5% 65px;text-align:center}
+.main-title{
+  margin:0 0 22px;font-family:Georgia,"Times New Roman",serif;
+  font-size:40px;line-height:1.2;color:#d71940;font-weight:700;
+}
+.subtitle{
+  margin:0 0 60px;font-family:Georgia,"Times New Roman",serif;
+  font-size:26px;color:#555;
+}
+.cards{
+  max-width:1510px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+}
+.card{
+  min-height:285px;background:#fff;border:3px solid #d9dce2;
+  border-radius:20px;text-decoration:none;color:#17345f;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:30px 20px;transition:.15s ease;
+  box-shadow:0 2px 12px rgba(0,0,0,.04)
+}
+.card:first-child{border-color:#d71940;background:#fffafb}
+.card:hover{transform:translateY(-2px);border-color:#d71940}
+.card-icon{font-size:74px;line-height:1;margin-bottom:25px}
+.card h2{
+  margin:0 0 10px;color:#d71940;
+  font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+  font-size:31px;font-weight:700;
+}
+.card p{
+  margin:0;font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;color:#555;font-weight:400
+}
+
+footer{background:#08469b;color:#fff;text-align:center;padding:24px 15px;font-size:16px;line-height:1.8}
+footer p{margin:3px}
+footer a{color:#fff;text-decoration:none}
+
+@media(max-width:900px){
+  .topbar{height:auto;min-height:52px;padding:8px 4%;gap:10px;font-size:14px}
+  .lang-btn{font-size:14px;padding:5px 12px}
+  .header{padding:30px 15px 28px}
+  .logo{width:100px;height:100px;margin-bottom:18px}
+  .header h2{font-size:19px}.header h1{font-size:23px}.header p{font-size:20px}
+  .main-title{font-size:31px}.subtitle{font-size:21px;margin-bottom:40px}
+  .cards{grid-template-columns:1fr;max-width:520px}
+  .card{min-height:220px}
+}
+@media(max-width:560px){
+  .topbar{justify-content:center;flex-wrap:wrap}
+  .header h2{font-size:17px}.header h1{font-size:20px}.header p{font-size:17px}
+  .main-title{font-size:26px}.subtitle{font-size:18px}
+  .card h2{font-size:27px}
+}
 </style>
 </head>
 <body>
-<div class="topbar"><div>सुदूरपश्चिम प्रदेश सरकार</div><div class="topbar-right"><a href="tel:096590929">☎ ०९६-५९०९२९</a><a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a><button class="lang-btn" id="languageToggle" type="button">English</button></div></div>
-<header class="header"><div class="logo"><img alt="सुदूरपश्चिम प्रदेश सरकारको लोगो" src="gov-logo.png"/></div><div class="office"><h2>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h2><h1>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</h1><p>प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p></div></header>
+
+<div class="topbar">
+  <a href="tel:096590929" data-ne="☎ ०९६-५९०९२९" data-en="☎ 096-590929">☎ ०९६-५९०९२९</a>
+  <a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a>
+  <button type="button" id="languageToggle" class="lang-btn">English</button>
+</div>
+
+<header class="header">
+  <div class="logo">
+    <img src="gov-logo.png" alt="सुदूरपश्चिम प्रदेश सरकारको लोगो">
+  </div>
+  <h2 data-ne="सुदूरपश्चिम प्रदेश सरकार" data-en="Government of Sudurpashchim Province">सुदूरपश्चिम प्रदेश सरकार</h2>
+  <h1 data-ne="भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय" data-en="Ministry of Land Management, Agriculture and Cooperatives">भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h1>
+  <p data-ne="उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP)" data-en="Resilient High Value Agricultural Programme (R-HVAP)">उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP)</p>
+  <p data-ne="प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा" data-en="Provincial Programme Management Office, Dadeldhura">प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p>
+</header>
+
 <div class="red-line"></div>
-<nav><a class="active" href="index.html">गृहपृष्ठ</a><a href="notice.html">सूचना</a><a href="form.html">आवेदन फारम</a><a href="apply.html">अनलाइन आवेदन</a></nav>
-<main><h1 class="main-title">लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम</h1><p class="subtitle">कृषि तथा कृषि व्यवसाय प्रवर्द्धन</p>
-<section class="cards">
-<a class="card" href="apply.html"><div class="card-icon">📝</div><h2>अनलाइन आवेदन</h2><p>Online Application</p></a>
-<a class="card" href="notice.html"><div class="card-icon">📄</div><h2>सूचना</h2><p>Notice</p></a>
-<a class="card" href="form.html"><div class="card-icon">📋</div><h2>आवेदन फाराम</h2><p>Application Form</p></a>
-</section></main>
-<footer><p>व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p><p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" rel="noopener" target="_blank">pmorhvap.sudurpashchim.gov.np</a></p></footer>
+
+<main>
+  <h1 class="main-title" data-ne="लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम" data-en="MSME Co-Investment Programme">लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम</h1>
+  <p class="subtitle" data-ne="कृपया तलको विकल्प छान्नुहोस्" data-en="Please choose an option below">कृपया तलको विकल्प छान्नुहोस्</p>
+
+  <section class="cards">
+    <a class="card" href="apply.html">
+      <div class="card-icon">📝</div>
+      <h2 data-ne="अनलाइन आवेदन" data-en="Online Application">अनलाइन आवेदन</h2>
+      <p data-ne="अनलाइन आवेदन" data-en="Online Application">अनलाइन आवेदन</p>
+    </a>
+    <a class="card" href="notice.html">
+      <div class="card-icon">📄</div>
+      <h2 data-ne="सूचना" data-en="Notices">सूचना</h2>
+      <p data-ne="सूचना" data-en="Notices">सूचना</p>
+    </a>
+    <a class="card" href="form.html">
+      <div class="card-icon">📋</div>
+      <h2 data-ne="आवेदन फारम" data-en="Application Form">आवेदन फारम</h2>
+      <p data-ne="आवेदन फारम" data-en="Application Form">आवेदन फारम</p>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <p data-ne="व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन" data-en="Professional and Creative Administration: Development, Prosperity and Good Governance">व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p>
+  <p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" target="_blank" rel="noopener">pmorhvap.sudurpashchim.gov.np</a></p>
+</footer>
+
 <script>
 (function(){
-const translations={"सुदूरपश्चिम प्रदेश सरकार": "Government of Sudurpashchim Province", "भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय": "Ministry of Land Management, Agriculture and Cooperatives", "उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम": "Resilient High Value Agricultural Programme (R-HVAP)", "प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा": "Provincial Programme Management Office, Dadeldhura", "गृहपृष्ठ": "Home", "सूचना": "Notices", "आवेदन फारम": "Application Form", "आवेदन फाराम": "Application Form", "अनलाइन आवेदन": "Online Application", "लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम": "MSME Co-Investment Programme", "कृषि तथा कृषि व्यवसाय प्रवर्द्धन": "Agriculture and Agribusiness Promotion", "आधिकारिक सूचना": "Official Notice", "PDF डाउनलोड गर्नुहोस्": "Download PDF", "PDF नखुलेमा डाउनलोड बटन प्रयोग गर्नुहोस्।": "If the PDF does not open, use the download button.", "आवेदन फारम (अनुसूची १.१)": "Application Form (Schedule 1.1)", "आवेदन फारम (अनुसूची-१.१)": "Application Form (Schedule 1.1)", "PDF फारम हेर्नुहोस्": "View PDF Form", "व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन": "Professional and Creative Administration: Development, Prosperity and Good Governance", "R-HVAP, डडेलधुरा": "R-HVAP, Dadeldhura", "Online Application": "Online Application", "Notice": "Notice", "Application Form": "Application Form"}; const key='rhvapLang';
-const original=new WeakMap(); const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let n; while(n=walker.nextNode()) original.set(n,n.nodeValue);
-const neTitle=document.title;
-function apply(lang){const en=lang==='en'; const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let x; while(x=w.nextNode()){const raw=original.get(x); if(raw===undefined) continue; const t=raw.trim(); if(!t) continue; if(en&&translations[t]) x.nodeValue=raw.replace(t,translations[t]); else if(!en) x.nodeValue=raw;} document.documentElement.lang=en?'en':'ne'; document.title=en?'R-HVAP | Programme Management Office':neTitle; document.getElementById('languageToggle').textContent=en?'नेपाली':'English'; localStorage.setItem(key,lang);}
-document.getElementById('languageToggle').addEventListener('click',()=>apply(localStorage.getItem(key)==='en'?'ne':'en')); apply(localStorage.getItem(key)==='en'?'en':'ne');
+  const key='rhvapLang';
+  const toggle=document.getElementById('languageToggle');
+  const elements=document.querySelectorAll('[data-ne][data-en]');
+
+  function applyLanguage(lang){
+    const english=lang==='en';
+    elements.forEach(function(el){
+      el.textContent=english ? el.getAttribute('data-en') : el.getAttribute('data-ne');
+    });
+    document.documentElement.lang=english?'en':'ne';
+    document.title=english ? 'R-HVAP | Programme Management Office' : 'R-HVAP | कार्यक्रम व्यवस्थापन कार्यालय';
+    toggle.textContent=english ? 'नेपाली' : 'English';
+    localStorage.setItem(key,lang);
+  }
+
+  toggle.addEventListener('click',function(){
+    const current=localStorage.getItem(key)==='en' ? 'en' : 'ne';
+    applyLanguage(current==='en'?'ne':'en');
+  });
+
+  applyLanguage(localStorage.getItem(key)==='en'?'en':'ne');
 })();
-</script></body></html>
+</script>
+</body>
+</html>
