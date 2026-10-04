@@ -26,8 +26,15 @@ table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid 
 .file-status{font-size:13px;margin-top:5px;overflow-wrap:anywhere}
 .file-status.error{color:#c11235}.file-status.ok{color:#16803c}
 @media(max-width:650px){.upload-grid{grid-template-columns:1fr}}
+
+.lang-btn{background:#fff;color:#08469b;border:1px solid #fff;border-radius:4px;padding:5px 12px;font-weight:bold;cursor:pointer}
+.lang-btn:hover{background:#f0f3f8}
 </style>
-</head><body><div class="top"><span>सुदूरपश्चिम प्रदेश सरकार</span><span>☎ ०९६-५९०९२९　 ✉ rhvap.sp@gmail.com</span></div>
+</head><body><div class="top">
+<span data-lang-text>सुदूरपश्चिम प्रदेश सरकार</span>
+<span data-lang-text>☎ ०९६-५९०९२९　 ✉ rhvap.sp@gmail.com</span>
+<button type="button" id="languageToggle" class="lang-btn">English</button>
+</div>
 <header class="head"><img class="logo" src="gov-logo.png" alt="प्रदेश सरकारको लोगो"><div class="brand"><b>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</b><strong>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</strong><span>प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</span></div></header>
 <nav><a href="index.html">गृहपृष्ठ</a><a href="notice.html">सूचना</a><a href="form.html">आवेदन फारम</a><a href="apply.html">अनलाइन आवेदन</a></nav><main><div class="toolbar"><h2>आवेदन फारम (अनुसूची-१.१)</h2><a class="btn alt" href="form.html">PDF फारम हेर्नुहोस्</a></div>
 <section class="paper"><h2>लघु, साना तथा मझौला उद्योगहरू संग सहलगानी कार्यक्रममा आशय पेश गर्ने आवेदन फारम</h2><p>(Related to Sub Section 8. ii.a of PIM of RHVAP)</p><p><b>श्रीमान् कार्यालय प्रमुखज्यू,</b><br>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP), PMO, डडेलधुरा।</p><p><b>विषयः</b> सहलगानी कार्यक्रममा सहभागी हुन पाऊँ सम्बन्धमा।</p><p>महोदय, उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम, कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुराबाट प्रकाशित सूचना अनुसार सहलगानी गरी कार्यक्रम सञ्चालन गर्न इच्छुक भएकाले तपसिल बमोजिमको विवरण र क्रियाकलापहरू सहित यो निवेदन पेश गरेको छु/छौँ।</p><div class="grid2"><div class="field"><label>निवेदन मिति</label><input type="date" name="date"></div><div class="field"><label>कार्यक्रम/क्रियाकलापको नाम</label><input name="program"></div><div class="field"><label>सूचना प्रकाशित मिति</label><input type="date" name="notice_date"></div><div class="field"><label>विन्डो</label><select name="window"><option value="">-- छान्नुहोस् --</option><option>Window-2</option><option>Window-3</option></select></div></div></section>
@@ -225,6 +232,65 @@ document.getElementById("sendApplication").addEventListener("click", async funct
       status.textContent = 'छानिएको फाइल: ' + file.name + ' (' + (file.size/1024/1024).toFixed(2) + ' MB)';
       status.classList.add('ok');
     });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  const translations = {"सुदूरपश्चिम प्रदेश सरकार": "Government of Sudurpashchim Province", "आवेदन फारम (अनुसूची-१.१)": "Application Form (Schedule-1.1)", "PDF फारम हेर्नुहोस्": "View PDF Form", "लघु, साना तथा मझौला उद्योगहरू संग सहलगानी कार्यक्रममा आशय पेश गर्ने आवेदन फारम": "Application Form for Expression of Interest in Co-investment Program with Micro, Small and Medium Enterprises", "श्रीमान् कार्यालय प्रमुखज्यू,": "To: Office Chief,", "उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP), PMO, डडेलधुरा।": "High Value Agricultural Products Resilient Program (R-HVAP), PMO, Dadeldhura.", "विषयः": "Subject:", "सहलगानी कार्यक्रममा सहभागी हुन पाऊँ सम्बन्धमा।": "Regarding participation in the co-investment program.", "महोदय, उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम, कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुराबाट प्रकाशित सूचना अनुसार सहलगानी गरी कार्यक्रम सञ्चालन गर्न इच्छुक भएकाले तपसिल बमोजिमको विवरण र क्रियाकलापहरू सहित यो निवेदन पेश गरेको छु/छौँ।": "Sir/Madam, As per the notice published by the Program Management Office, Dadeldhura, I/we am/are interested in implementing the program through co-investment and hereby submit this application with the details and activities below.", "निवेदन मिति": "Application Date", "कार्यक्रम/क्रियाकलापको नाम": "Program/Activity Name", "सूचना प्रकाशित मिति": "Notice Publication Date", "विन्डो": "Window", "-- छान्नुहोस् --": "-- Select --", "Window-2": "Window-2", "Window-3": "Window-3", "१) पेश गरेको कागजातहरू (ठीक ✓ लगाउनुहोस्)": "1) Submitted Documents (Tick ✓)", "प्रस्तावकको नागरिकता/राष्ट्रिय परिचयपत्रको प्रतिलिपि": "Copy of Applicant's Citizenship/National ID", "संस्था दर्ता प्रमाणपत्र तथा नवीकरणको प्रतिलिपि": "Organization Registration Certificate and Renewal Copy", "स्थायी लेखा नम्बर तथा कर चुक्ता पत्र": "PAN and Tax Clearance Certificate", "बाली-वस्तु (कच्चा पदार्थ) वा सेवा बिक्रीको सम्झौता/समझदारी पत्र": "Agreement/MoU for Supply or Sale", "गत आर्थिक वर्षको लेखा परीक्षण प्रतिवेदन": "Audit Report of Previous Fiscal Year", "सहलगानीको लागि स्रोत खुल्ने कागजात": "Documents Showing Source of Co-investment", "निर्माण गरिने पूर्वाधारको डिजाइन तथा इस्टिमेट": "Infrastructure Design and Estimate, if applicable", "प्रस्तावित लगानी कार्यक्रमका लागि अन्य दाताबाट अनुदान लिएको/लिन पहल भएको नभएको स्वघोषणा": "Self-declaration about grants from other donors", "लगानी कार्यक्रमको कार्यान्वयन तालिका": "Implementation Schedule of the Investment Program", "अन्य भए खुलाउने": "Other Supporting Documents, if any", "२) निवेदकको संक्षिप्त विवरण": "2) Brief Details of Applicant", "फर्म/उद्यम/कम्पनी/संस्थाको नाम": "Name of Firm/Enterprise/Company/Organization", "अध्यक्ष/सञ्चालकको नाम थर": "Name of Chairperson/Director", "पद": "Position", "निवेदन पेश गरेको मिति": "Application Submission Date", "सम्पर्क फोन नं.": "Contact Phone No.", "वैकल्पिक सम्पर्क व्यक्ति": "Alternative Contact Person", "वैकल्पिक सम्पर्क नं.": "Alternative Contact No.", "ठेगाना (पालिका/वडा/टोलसहित)": "Address (Municipality/Ward/Tole)", "३) उप-परियोजनाको सामान्य जानकारी": "3) General Information of Sub-project", "उप-परियोजनाको नाम": "Sub-project Name", "अवधि सुरु मिति": "Start Date", "अवधि समाप्त मिति": "End Date", "कुल लगानी अंकमा (रु.)": "Total Investment (NPR)", "कुल लगानी शब्दमा": "Total Investment in Words", "४) आवेदकसम्बन्धी जानकारी": "4) Applicant Information", "संस्थाको नाम": "Organization Name", "दर्ता कार्यालय र दर्ता मिति": "Registration Office and Date", "स्थायी लेखा नम्बर (PAN)": "Permanent Account Number (PAN)", "ठेगाना": "Address", "सम्पर्क व्यक्ति र नम्बर": "Contact Person and Number", "इमेल": "Email", "५) संस्थाको परिचय": "5) Organization Profile", "कानूनी स्थिति: दर्ता प्रकार, दर्ता नम्बर र निकाय": "Legal Status: Registration Type, Number and Authority", "सम्बन्धित क्षेत्र/व्यवसायमा कार्य अनुभव (वर्षमा)": "Experience in Relevant Sector/Business (Years)", "हालका मुख्य व्यावसायिक गतिविधि तथा उत्पादनहरू": "Current Main Business Activities and Products", "विगत ३ आर्थिक वर्षको कारोबार (रु.) — २०८०/०८१": "Turnover of Previous 3 Fiscal Years (NPR) — 2080/081", "विगत ३ आर्थिक वर्षको कारोबार (रु.) — २०८१/०८२": "Turnover of Previous 3 Fiscal Years (NPR) — 2081/082", "विगत ३ आर्थिक वर्षको कारोबार (रु.) — २०८२/०८३": "Turnover of Previous 3 Fiscal Years (NPR) — 2082/083", "बजार पहुँच/सम्बन्ध: मुख्य बजार, क्रेता/सप्लायर र सम्झौता": "Market Access/Linkages: Main Markets, Buyers/Suppliers and Agreements", "हाल कार्यरत कुल कर्मचारी/श्रमिक संख्या": "Total Employees/Workers Currently Engaged", "प्राविधिक जनशक्ति": "Technical Staff", "प्रशासनिक/अन्य जनशक्ति": "Administrative/Other Staff", "६) SWOT विश्लेषण": "6) SWOT Analysis", "सबल पक्ष": "Strengths", "दुर्बल पक्ष": "Weaknesses", "अवसरहरू": "Opportunities", "चुनौतीहरू": "Threats/Challenges", "७) प्रस्तावित गतिविधिहरू": "7) Proposed Activities", "संस्थाले के गर्न चाहन्छ र कमजोरी हटाउन/सबल पक्ष विकास गर्न कसरी मद्दत गर्छ?": "What does the organization want to do, and how will it address weaknesses/develop strengths?", "८) अपेक्षित प्रतिफल/उपलब्धिहरू": "8) Expected Results/Outputs", "अपेक्षित प्रतिफल/उपलब्धिहरू": "Expected Results/Outputs", "९) उत्पादक संस्था (PO) हरूलाई सहयोग": "9) Support to Producer Organizations (POs)", "सहयोग गर्ने ढाँचा र सम्बन्ध/सञ्जाल (Modality of support and linkage)": "Modality of Support and Linkage", "११) सहलगानी तथा पूर्वाधार विकास योजना: आफ्नो सहलगानीको स्रोत": "11) Co-investment and Infrastructure Development Plan: Source of Own Co-investment", "सहलगानीको स्रोत खुलाउनुहोस्": "Specify Source of Co-investment", "१२) घोषणा तथा हस्ताक्षर": "12) Declaration and Signature", "घोषणा: माथि उल्लेखित गतिविधिहरूका लागि विगत ३ वर्षमा सरकारी/गैरसरकारी निकायबाट योगदान प्राप्त गरेको छैन।": "Declaration: I/We have not received contributions from any government/non-government agency for the activities stated above during the last 3 years.", "नाम": "Name", "मिति": "Date", "छाप/संस्थाको विवरण": "Seal/Organization Details", "हस्ताक्षर गर्ने व्यक्तिको नाम": "Name of Authorized Signatory", "१०) सहलगानी तथा पूर्वाधार विकास योजना": "10) Co-investment and Infrastructure Development Plan", "PDF अनुसार गतिविधि १–८ सम्मका लागि विवरण भर्नुहोस्। रकमहरू रु. मा राख्नुहोस्।": "Enter details for activities 1–8 as per the PDF. Enter amounts in NPR.", "क्र.सं.": "S.N.", "गतिविधि": "Activity", "एकाइ": "Unit", "परिमाण": "Quantity", "दर (रु.)": "Rate (NPR)", "कूल लागत (रु.)": "Total Cost (NPR)", "१३) आवश्यक कागजातहरू अपलोड": "13) Upload Required Documents", "अनुमत ढाँचा: JPG, JPEG, PNG, PDF । प्रति फाइल अधिकतम २ MB । आवश्यक कागजातका फाइल अपलोड गर्नुहोस्।": "Allowed formats: JPG, JPEG, PNG, PDF. Maximum 2 MB per file. Upload the required documents.", "प्रस्तावकको नागरिकता/राष्ट्रिय परिचयपत्रको प्रतिलिपि ": "Copy of Applicant's Citizenship/National ID ", "संस्था दर्ता प्रमाणपत्र तथा नवीकरणको प्रतिलिपि ": "Organization Registration Certificate and Renewal Copy ", "स्थायी लेखा नम्बर तथा कर चुक्ता पत्र ": "PAN and Tax Clearance Certificate ", "छानिएको फाइल: ": "Selected file: ", "गलत फाइल प्रकार। JPG, JPEG, PNG वा PDF मात्र छान्नुहोस्।": "Invalid file type. Please select JPG, JPEG, PNG or PDF only.", "फाइल २ MB भन्दा ठूलो छ। सानो फाइल छान्नुहोस्।": "File is larger than 2 MB. Please select a smaller file.", "आवेदन पेश गर्नुहोस्": "Submit Application", "प्रिन्ट / PDF बनाउनुहोस्": "Print / Create PDF", "फारम भरेपछि आवेदन पेश गर्नुहोस्।": "Complete the form and submit the application.", "फाइलहरू तयार हुँदैछन्...": "Preparing files...", "फारम र फाइल जाँच हुँदैछ...": "Checking form and files...", "आवेदन पठाइँदैछ। कृपया पेज नबन्द गर्नुहोस्...": "Submitting application. Please do not close this page...", "त्रुटि: ": "Error: ", "JPG, JPEG, PNG, PDF • Max २ MB": "JPG, JPEG, PNG, PDF • Max 2 MB", "व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन": "Professional and Creative Administration: Development, Prosperity and Good Governance", "गृहपृष्ठ": "Home", "सूचना": "Notice", "आवेदन फारम": "Application Form", "अनलाइन आवेदन": "Online Application"};
+  let englishMode = false;
+
+  // Store original text nodes so switching back to Nepali is exact.
+  const original = new WeakMap();
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while (node = walker.nextNode()) {
+    const t = node.nodeValue.trim();
+    if (t) original.set(node, node.nodeValue);
+  }
+
+  function translatePage(toEnglish) {
+    const nodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let n;
+    while (n = nodes.nextNode()) {
+      const raw = original.get(n);
+      if (raw === undefined) continue;
+      const trimmed = raw.trim();
+      if (!trimmed) continue;
+      if (toEnglish && translations[trimmed]) {
+        n.nodeValue = raw.replace(trimmed, translations[trimmed]);
+      } else if (!toEnglish) {
+        n.nodeValue = raw;
+      }
+    }
+
+    // Translate the upload/status messages that are generated dynamically.
+    document.querySelectorAll('.english-label').forEach(el => {
+      const map = {
+        "Copy of Citizenship/National ID":"Copy of Citizenship/National ID",
+        "Organization registration certificate and renewal copy":"Organization registration certificate and renewal copy",
+        "PAN and Tax Clearance Certificate":"PAN and Tax Clearance Certificate",
+        "Agreement/MoU for supply or sale":"Agreement/MoU for supply or sale",
+        "Audit report of the previous fiscal year":"Audit report of the previous fiscal year",
+        "Documents showing source of co-investment":"Documents showing source of co-investment",
+        "Infrastructure design and estimate, if applicable":"Infrastructure design and estimate, if applicable",
+        "Self-declaration about grants from other donors":"Self-declaration about grants from other donors",
+        "Implementation schedule of the investment program":"Implementation schedule of the investment program",
+        "Other supporting documents, if any":"Other supporting documents, if any"
+      };
+      if (!el.dataset.ne) el.dataset.ne = el.textContent;
+      el.textContent = toEnglish ? el.textContent : el.dataset.ne;
+    });
+
+    const btn = document.getElementById('languageToggle');
+    if (btn) btn.textContent = toEnglish ? 'नेपाली' : 'English';
+    document.documentElement.lang = toEnglish ? 'en' : 'ne';
+  }
+
+  document.getElementById('languageToggle')?.addEventListener('click', function() {
+    englishMode = !englishMode;
+    translatePage(englishMode);
   });
 })();
 </script>
