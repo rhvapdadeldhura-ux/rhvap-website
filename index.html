@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="ne">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>R-HVAP | कार्यक्रम व्यवस्थापन कार्यालय</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;color:#17345f;background:#f7f8fa}
@@ -22,15 +23,23 @@ footer{background:#08469b;color:white;text-align:center;padding:22px 12px;font-s
 </style>
 </head>
 <body>
-<div class="topbar"><div>सुदूरपश्चिम प्रदेश सरकार</div><div class="topbar-right"><a href="tel:096590929">☎ ०९६-५९०९२९</a><a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a><button class="english" type="button">English</button></div></div>
-<header class="header"><div class="logo"><img src="gov-logo.png" alt="सुदूरपश्चिम प्रदेश सरकारको लोगो"></div><div class="office"><h2>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h2><h1>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</h1><p>प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p></div></header>
+<div class="topbar"><div>सुदूरपश्चिम प्रदेश सरकार</div><div class="topbar-right"><a href="tel:096590929">☎ ०९६-५९०९२९</a><a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a><button class="lang-btn" id="languageToggle" type="button">English</button></div></div>
+<header class="header"><div class="logo"><img alt="सुदूरपश्चिम प्रदेश सरकारको लोगो" src="gov-logo.png"/></div><div class="office"><h2>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</h2><h1>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</h1><p>प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</p></div></header>
 <div class="red-line"></div>
-<nav><a href="index.html" class="active">गृहपृष्ठ</a><a href="notice.html">सूचना</a><a href="form.html">आवेदन फारम</a><a href="apply.html">अनलाइन आवेदन</a></nav>
+<nav><a class="active" href="index.html">गृहपृष्ठ</a><a href="notice.html">सूचना</a><a href="form.html">आवेदन फारम</a><a href="apply.html">अनलाइन आवेदन</a></nav>
 <main><h1 class="main-title">लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम</h1><p class="subtitle">कृषि तथा कृषि व्यवसाय प्रवर्द्धन</p>
 <section class="cards">
 <a class="card" href="apply.html"><div class="card-icon">📝</div><h2>अनलाइन आवेदन</h2><p>Online Application</p></a>
 <a class="card" href="notice.html"><div class="card-icon">📄</div><h2>सूचना</h2><p>Notice</p></a>
 <a class="card" href="form.html"><div class="card-icon">📋</div><h2>आवेदन फाराम</h2><p>Application Form</p></a>
 </section></main>
-<footer><p>व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p><p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" target="_blank" rel="noopener">pmorhvap.sudurpashchim.gov.np</a></p></footer>
-</body></html>
+<footer><p>व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p><p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" rel="noopener" target="_blank">pmorhvap.sudurpashchim.gov.np</a></p></footer>
+<script>
+(function(){
+const translations={"सुदूरपश्चिम प्रदेश सरकार": "Government of Sudurpashchim Province", "भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय": "Ministry of Land Management, Agriculture and Cooperatives", "उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम": "Resilient High Value Agricultural Programme (R-HVAP)", "प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा": "Provincial Programme Management Office, Dadeldhura", "गृहपृष्ठ": "Home", "सूचना": "Notices", "आवेदन फारम": "Application Form", "आवेदन फाराम": "Application Form", "अनलाइन आवेदन": "Online Application", "लघु, साना तथा मझौला उद्योगसँग सहलगानी कार्यक्रम": "MSME Co-Investment Programme", "कृषि तथा कृषि व्यवसाय प्रवर्द्धन": "Agriculture and Agribusiness Promotion", "आधिकारिक सूचना": "Official Notice", "PDF डाउनलोड गर्नुहोस्": "Download PDF", "PDF नखुलेमा डाउनलोड बटन प्रयोग गर्नुहोस्।": "If the PDF does not open, use the download button.", "आवेदन फारम (अनुसूची १.१)": "Application Form (Schedule 1.1)", "आवेदन फारम (अनुसूची-१.१)": "Application Form (Schedule 1.1)", "PDF फारम हेर्नुहोस्": "View PDF Form", "व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन": "Professional and Creative Administration: Development, Prosperity and Good Governance", "R-HVAP, डडेलधुरा": "R-HVAP, Dadeldhura", "Online Application": "Online Application", "Notice": "Notice", "Application Form": "Application Form"}; const key='rhvapLang';
+const original=new WeakMap(); const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let n; while(n=walker.nextNode()) original.set(n,n.nodeValue);
+const neTitle=document.title;
+function apply(lang){const en=lang==='en'; const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let x; while(x=w.nextNode()){const raw=original.get(x); if(raw===undefined) continue; const t=raw.trim(); if(!t) continue; if(en&&translations[t]) x.nodeValue=raw.replace(t,translations[t]); else if(!en) x.nodeValue=raw;} document.documentElement.lang=en?'en':'ne'; document.title=en?'R-HVAP | Programme Management Office':neTitle; document.getElementById('languageToggle').textContent=en?'नेपाली':'English'; localStorage.setItem(key,lang);}
+document.getElementById('languageToggle').addEventListener('click',()=>apply(localStorage.getItem(key)==='en'?'ne':'en')); apply(localStorage.getItem(key)==='en'?'en':'ne');
+})();
+</script></body></html>
