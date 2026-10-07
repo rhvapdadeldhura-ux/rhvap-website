@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="R-HVAP Online Application">
+  <title>R-HVAP | अनलाइन आवेदन</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">मुख्य सामग्रीमा जानुहोस्</a>
+<header class="site-header">
+  <div class="topbar"><div class="container topbar-inner">
+    <div class="contact"><a href="tel:096590929">☎ ०९६-५९०९२९</a><a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a></div>
+    <button class="lang-btn" id="languageToggle" type="button">English</button>
+  </div></div>
+  <div class="brand"><div class="container brand-inner">
+    <img src="assets/gov-logo.png" alt="नेपाल सरकारको निशान छाप" class="logo" onerror="this.style.display='none'">
+    <div class="brand-text">
+      <div data-ne="सुदूरपश्चिम प्रदेश सरकार" data-en="Sudurpashchim Province Government">सुदूरपश्चिम प्रदेश सरकार</div>
+      <div data-ne="भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय" data-en="Ministry of Land Management, Agriculture and Cooperatives">भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</div>
+      <div class="program" data-ne="उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम" data-en="High Value Agriculture Resilient Value Chains Program">उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</div>
+      <div class="office" data-ne="प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा" data-en="Provincial Program Management Office, Dadeldhura">प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</div>
+    </div>
+  </div></div>
+</header>
+
+<main id="main" class="page">
+  <div class="container form-container">
+    <div class="page-heading">
+      <div>
+        <a class="back" href="index.html">← <span data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</span></a>
+        <span class="eyebrow">ONLINE APPLICATION</span>
+        <h1 data-ne="अनलाइन आवेदन फारम (अनुसूची-१.१)" data-en="Online Application Form (Schedule-1.1)">अनलाइन आवेदन फारम (अनुसूची-१.१)</h1>
+      </div>
+      <a class="btn secondary-btn" href="form.html">📄 <span data-ne="PDF फारम" data-en="PDF Form">PDF फारम</span></a>
+    </div>
+
+    <form id="applicationForm" novalidate>
+      <section class="form-section">
+        <h2>१. कार्यक्रम तथा आवेदन विवरण</h2>
+        <div class="grid two">
+          <label>आवेदन मिति / Application Date<input type="date" name="application_date"></label>
+          <label>सूचना मिति / Notice Date<input type="date" name="notice_date"></label>
+          <label>आवेदन अवधिको अन्तिम मिति / Deadline<input type="date" name="deadline"></label>
+          <label>कार्यक्रम / Program
+            <select name="program">
+              <option value="">छान्नुहोस् / Select</option>
+              <option>MSMEs सह-लगानी कार्यक्रम</option>
+              <option>अन्य</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>२. आवेदकको विवरण</h2>
+        <div class="grid two">
+          <label>संस्था/फर्म/कम्पनीको नाम *<input name="organization" required></label>
+          <label>दर्ता नं. *<input name="registration_no" required></label>
+          <label>दर्ता मिति<input type="date" name="registration_date"></label>
+          <label>PAN नं.<input name="pan"></label>
+          <label>सम्पर्क व्यक्ति *<input name="contact_person" required></label>
+          <label>पद<input name="position"></label>
+          <label>मोबाइल नं. *<input type="tel" name="phone" required></label>
+          <label>इमेल<input type="email" name="email"></label>
+          <label class="full">ठेगाना *<textarea name="address" rows="2" required></textarea></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>३. प्रस्तावित उप-परियोजनाको विवरण</h2>
+        <div class="grid two">
+          <label>उप-परियोजनाको नाम *<input name="project_name" required></label>
+          <label>जिल्ला *<input name="district" value="डडेलधुरा" required></label>
+          <label>स्थानीय तह<input name="local_level"></label>
+          <label>वडा नं.<input name="ward"></label>
+          <label class="full">मुख्य गतिविधि *
+            <select name="activity" required>
+              <option value="">छान्नुहोस् / Select</option>
+              <option>नर्सरी</option>
+              <option>श्रोत केन्द्र</option>
+              <option>जैविक उत्पादन सामग्री आपूर्ति</option>
+              <option>भण्डारण</option>
+              <option>प्रशोधन</option>
+              <option>बजारिकरण</option>
+              <option>कृषि पर्यटन</option>
+              <option>अन्य</option>
+            </select>
+          </label>
+          <label class="full">संक्षिप्त परिचय / Brief Description<textarea name="description" rows="4"></textarea></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>४. संस्थाको आर्थिक विवरण</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>आर्थिक वर्ष</th><th>कुल कारोबार (रु.)</th><th>कैफियत</th></tr></thead>
+            <tbody>
+              <tr><td>२०८०/०८१</td><td><input type="number" min="0" name="turnover_2080"></td><td><input name="turnover_note_2080"></td></tr>
+              <tr><td>२०८१/०८२</td><td><input type="number" min="0" name="turnover_2081"></td><td><input name="turnover_note_2081"></td></tr>
+              <tr><td>२०८२/०८३</td><td><input type="number" min="0" name="turnover_2082"></td><td><input name="turnover_note_2082"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>५. SWOT विश्लेषण</h2>
+        <div class="grid two">
+          <label>बलियो पक्ष / Strengths<textarea name="strengths" rows="4"></textarea></label>
+          <label>कमजोरी / Weaknesses<textarea name="weaknesses" rows="4"></textarea></label>
+          <label>अवसर / Opportunities<textarea name="opportunities" rows="4"></textarea></label>
+          <label>चुनौती / Threats<textarea name="threats" rows="4"></textarea></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>६. प्रस्तावित गतिविधि</h2>
+        <div id="activities">
+          <div class="activity-row">
+            <div class="activity-number">१</div>
+            <input name="activity_name[]" placeholder="गतिविधिको नाम">
+            <input name="activity_unit[]" placeholder="इकाई">
+            <input type="number" min="0" name="activity_qty[]" placeholder="परिमाण">
+            <input type="number" min="0" name="activity_rate[]" placeholder="दर">
+            <button type="button" class="remove-activity" aria-label="Remove">×</button>
+          </div>
+        </div>
+        <button type="button" class="add-btn" id="addActivity">＋ अर्को गतिविधि थप्नुहोस्</button>
+      </section>
+
+      <section class="form-section">
+        <h2>७. अपेक्षित परिणाम तथा सहयोग</h2>
+        <div class="grid two">
+          <label>अपेक्षित परिणाम<textarea name="expected_results" rows="4"></textarea></label>
+          <label>कार्यक्रमबाट अपेक्षित सहयोग<textarea name="support_required" rows="4"></textarea></label>
+          <label class="full">सह-लगानीको स्रोत<textarea name="coinvestment_source" rows="3"></textarea></label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>८. पेश गरेको कागजातहरू</h2>
+        <div class="check-grid">
+          <label><input type="checkbox" name="docs[]" value="citizenship"> नागरिकता / राष्ट्रिय परिचयपत्रको प्रतिलिपि</label>
+          <label><input type="checkbox" name="docs[]" value="registration"> दर्ता तथा नवीकरण प्रमाणपत्र</label>
+          <label><input type="checkbox" name="docs[]" value="pan"> PAN / कर चुक्ता प्रमाणपत्र</label>
+          <label><input type="checkbox" name="docs[]" value="agreement"> कच्चा पदार्थ/सेवा बिक्री सम्झौता</label>
+          <label><input type="checkbox" name="docs[]" value="audit"> लेखापरीक्षण प्रतिवेदन</label>
+          <label><input type="checkbox" name="docs[]" value="source"> सह-लगानी स्रोतको प्रमाण</label>
+          <label><input type="checkbox" name="docs[]" value="design"> पूर्वाधार डिजाइन/लागत अनुमान</label>
+          <label><input type="checkbox" name="docs[]" value="declaration"> अन्य अनुदान नलिएको स्वघोषणा</label>
+          <label><input type="checkbox" name="docs[]" value="schedule"> कार्यान्वयन कार्यतालिका</label>
+          <label><input type="checkbox" name="docs[]" value="other"> अन्य</label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>९. लागत विवरण</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>क्र.</th><th>गतिविधि</th><th>इकाई</th><th>परिमाण</th><th>दर</th><th>जम्मा</th><th>MSME लगानी</th><th>R-HVAP लगानी</th></tr></thead>
+            <tbody id="costRows">
+              <tr>
+                <td>१</td><td><input name="cost_activity[]"></td><td><input name="cost_unit[]"></td>
+                <td><input type="number" min="0" name="cost_qty[]"></td><td><input type="number" min="0" name="cost_rate[]"></td>
+                <td><input type="number" min="0" name="cost_total[]"></td><td><input type="number" min="0" name="msme_investment[]"></td><td><input type="number" min="0" name="rhvap_investment[]"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="add-btn" id="addCost">＋ अर्को लागत विवरण थप्नुहोस्</button>
+      </section>
+
+      <section class="form-section">
+        <h2>१०. घोषणा तथा सम्पर्क</h2>
+        <label class="declaration"><input type="checkbox" name="declaration" required> म/हामीले पेश गरेको विवरण सत्य रहेको र कार्यक्रमका शर्तहरू पालना गर्ने घोषणा गर्दछु/गर्दछौं। *</label>
+        <div class="grid two signature-grid">
+          <label>आवेदक/अधिकृत व्यक्तिको नाम *<input name="applicant_name" required></label>
+          <label>पद<input name="applicant_position"></label>
+        </div>
+      </section>
+
+      <section class="form-section upload-section">
+        <h2>११. कागजात अपलोड</h2>
+        <p class="muted">JPG, JPEG, PNG वा PDF मात्र। प्रत्येक फाइल अधिकतम 2 MB।</p>
+        <div class="upload-grid">
+          <label class="upload-card">कागजात १<input type="file" name="file1" accept=".jpg,.jpeg,.png,.pdf"></label>
+          <label class="upload-card">कागजात २<input type="file" name="file2" accept=".jpg,.jpeg,.png,.pdf"></label>
+          <label class="upload-card">कागजात ३<input type="file" name="file3" accept=".jpg,.jpeg,.png,.pdf"></label>
+          <label class="upload-card">कागजात ४<input type="file" name="file4" accept=".jpg,.jpeg,.png,.pdf"></label>
+          <label class="upload-card">कागजात ५<input type="file" name="file5" accept=".jpg,.jpeg,.png,.pdf"></label>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button class="btn primary-btn" type="submit">✓ आवेदन पेश गर्नुहोस्</button>
+        <button class="btn secondary-btn" type="reset">फारम खाली गर्नुहोस्</button>
+      </div>
+      <div id="formMessage" class="form-message" role="status"></div>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="container">
+  <p class="slogan">व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p>
+  <p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" target="_blank" rel="noopener">pmorhvap.sudurpashchim.gov.np</a></p>
+</div></footer>
+<script src="js/script.js"></script>
+<script src="js/apply.js"></script>
+</body>
+</html>
