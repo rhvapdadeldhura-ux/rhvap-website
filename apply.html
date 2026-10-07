@@ -1,220 +1,400 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="R-HVAP Online Application">
-  <title>R-HVAP | अनलाइन आवेदन</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="R-HVAP अनुसूची-१.१ अनलाइन आवेदन फारम">
+<title>R-HVAP | अनुसूची-१.१ अनलाइन आवेदन</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+:root{--ink:#182230;--muted:#667085;--line:#b9c2cc;--soft:#f5f7fa;--brand:#176b3a;--accent:#0f5132}
+body{background:#eef1f4;color:var(--ink)}
+.form-container{max-width:1180px}
+.pdf-form{background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:34px 42px;margin:20px 0 50px}
+.doc-head{text-align:center;border-bottom:2px solid #222;padding-bottom:18px;margin-bottom:18px}
+.doc-head .schedule{font-weight:800;font-size:20px}
+.doc-head .ref{font-size:13px;margin:5px 0 10px}
+.doc-head h1{font-size:22px;margin:6px 0;font-weight:800}
+.doc-head p{margin:4px 0}
+.letter{line-height:1.9;font-size:15px}
+.inline-field{display:inline-block;border-bottom:1px dotted #555;min-width:160px;padding:0 6px}
+.section-title{font-size:18px;font-weight:800;margin:24px 0 10px;padding:8px 12px;background:#eef6f0;border-left:5px solid var(--brand)}
+.subnote{font-size:13px;color:#475467;margin:-4px 0 10px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}
+.field-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field-grid.one{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:5px}
+.field.full{grid-column:1/-1}
+label{font-weight:700;font-size:14px}
+input,select,textarea{font:inherit;border:1px solid #aeb7c2;border-radius:4px;padding:9px 10px;background:#fff;box-sizing:border-box;width:100%}
+textarea{resize:vertical;min-height:80px}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(23,107,58,.18);border-color:var(--brand)}
+.req{color:#b42318}
+.info-table,.cost-table{width:100%;border-collapse:collapse;margin:10px 0 16px}
+.info-table th,.info-table td,.cost-table th,.cost-table td{border:1px solid #8f99a5;padding:8px;vertical-align:top}
+.info-table th,.cost-table th{background:#f0f2f4;text-align:center;font-weight:800}
+.info-table .num{width:48px;text-align:center}
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+.check-item{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:500}
+.check-item input{width:auto;margin-top:3px}
+.swot{display:grid;grid-template-columns:1fr 1fr;border:1px solid #8f99a5}
+.swot-box{padding:0;border:1px solid #8f99a5}
+.swot-box h3{text-align:center;margin:0;padding:8px;background:#f0f2f4;font-size:15px}
+.swot-box textarea{border:0;border-radius:0;min-height:180px}
+.cost-wrap{overflow-x:auto}
+.cost-table{min-width:1000px}
+.cost-table input{min-width:90px;padding:7px}
+.cost-table .n{width:42px;text-align:center}
+.cost-table .activity{min-width:190px}
+.cost-table .unit{min-width:90px}
+.cost-table .calc{background:#f8fafc;font-weight:700}
+.total-row td{font-weight:800;background:#eef6f0}
+.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.upload-card{border:1px solid #cbd5df;border-radius:6px;padding:12px;background:#fafbfc}
+.upload-card small{display:block;color:#667085;margin-top:5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:26px 0}
+.btn-main{background:var(--brand);color:#fff;border:0;border-radius:6px;padding:11px 18px;font-weight:800;cursor:pointer}
+.btn-light{background:#fff;border:1px solid #98a2b3;border-radius:6px;padding:10px 16px;font-weight:700;cursor:pointer}
+.error{border-color:#d92d20!important;background:#fff6f6}
+.error-msg{color:#b42318;font-size:13px;margin-top:4px}
+.success{display:none;border:1px solid #6ce9a6;background:#ecfdf3;padding:14px;border-radius:6px;margin:16px 0}
+.small{font-size:12px;color:#667085}
+.notice-box{background:#fff8e6;border:1px solid #f2cc66;padding:10px 12px;border-radius:5px;margin:12px 0;font-size:13px}
+@media(max-width:800px){
+ .pdf-form{padding:20px 14px}.field-grid,.field-grid.three,.doc-grid,.upload-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}.swot{grid-template-columns:1fr}.doc-head h1{font-size:18px}
+}
+@media print{
+ body{background:#fff}.site-header,.page-heading,.actions,.notice-box,.success,.back{display:none!important}
+ .pdf-form{box-shadow:none;margin:0;padding:0}.section-title{break-after:avoid}
+ input,select,textarea{border:0;padding:3px;background:transparent}
+ .upload-card{break-inside:avoid}.cost-wrap{overflow:visible}.cost-table{min-width:0}
+}
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">मुख्य सामग्रीमा जानुहोस्</a>
 <header class="site-header">
   <div class="topbar"><div class="container topbar-inner">
     <div class="contact"><a href="tel:096590929">☎ ०९६-५९०९२९</a><a href="mailto:rhvap.sp@gmail.com">✉ rhvap.sp@gmail.com</a></div>
     <button class="lang-btn" id="languageToggle" type="button">English</button>
   </div></div>
   <div class="brand"><div class="container brand-inner">
-    <img src="assets/gov-logo.png" alt="नेपाल सरकारको निशान छाप" class="logo" onerror="this.style.display='none'">
+    <img src="assets/gov-logo.png" alt="सरकारी लोगो" class="logo" onerror="this.style.display='none'">
     <div class="brand-text">
-      <div data-ne="सुदूरपश्चिम प्रदेश सरकार" data-en="Sudurpashchim Province Government">सुदूरपश्चिम प्रदेश सरकार</div>
-      <div data-ne="भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय" data-en="Ministry of Land Management, Agriculture and Cooperatives">भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</div>
-      <div class="program" data-ne="उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम" data-en="High Value Agriculture Resilient Value Chains Program">उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</div>
-      <div class="office" data-ne="प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा" data-en="Provincial Program Management Office, Dadeldhura">प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</div>
+      <div>सुदूरपश्चिम प्रदेश सरकार</div>
+      <div>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</div>
+      <div class="program">उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम</div>
+      <div class="office">प्रादेशिक कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुरा</div>
     </div>
   </div></div>
 </header>
 
-<main id="main" class="page">
-  <div class="container form-container">
-    <div class="page-heading">
-      <div>
-        <a class="back" href="index.html">← <span data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</span></a>
-        <span class="eyebrow">ONLINE APPLICATION</span>
-        <h1 data-ne="अनलाइन आवेदन फारम (अनुसूची-१.१)" data-en="Online Application Form (Schedule-1.1)">अनलाइन आवेदन फारम (अनुसूची-१.१)</h1>
-      </div>
-      <a class="btn secondary-btn" href="form.html">📄 <span data-ne="PDF फारम" data-en="PDF Form">PDF फारम</span></a>
+<main class="page">
+<div class="container form-container">
+  <div class="page-heading">
+    <div>
+      <a class="back" href="index.html">← गृहपृष्ठ</a>
+      <span class="eyebrow">PDF-BASED ONLINE APPLICATION</span>
+      <h1>अनुसूची-१.१ — अनलाइन आवेदन</h1>
+    </div>
+    <a class="btn secondary-btn" href="form.html">📄 PDF फारम</a>
+  </div>
+
+  <div class="notice-box">
+    यो online form तपाईंले उपलब्ध गराउनुभएको ६-पृष्ठको अनुसूची-१.१ PDF को section/field structure लाई आधार बनाएर तयार गरिएको हो।
+    <strong>अहिलेको version frontend-only हो</strong>; submit data Google Sheets/Drive मा पठाउने backend अर्को चरणमा जोड्न सकिन्छ।
+  </div>
+
+  <form id="applicationForm" novalidate>
+  <div class="pdf-form">
+
+    <div class="doc-head">
+      <div class="schedule">अनुसूची-१.१</div>
+      <div class="ref">(Related to Sub Section 8. ii.a of PIM of RHVAP)</div>
+      <h1>लघु, साना तथा मझौला उद्योगहरु संग सहलगानी कार्यक्रममा आशय पेश गर्ने आवेदन फारम</h1>
+      <p>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP), PMO, डडेलधुरा</p>
     </div>
 
-    <form id="applicationForm" novalidate>
-      <section class="form-section">
-        <h2>१. कार्यक्रम तथा आवेदन विवरण</h2>
-        <div class="grid two">
-          <label>आवेदन मिति / Application Date<input type="date" name="application_date"></label>
-          <label>सूचना मिति / Notice Date<input type="date" name="notice_date"></label>
-          <label>आवेदन अवधिको अन्तिम मिति / Deadline<input type="date" name="deadline"></label>
-          <label>विन्डो छनोट * / Window Selection *
-            <select name="window_selection" required>
-              <option value="">छान्नुहोस् / Select Window</option>
-              <option value="Window-2">Window-2</option>
-              <option value="Window-3">Window-3</option>
-            </select>
-          </label>
-          <label>कार्यक्रम / Program
-            <select name="program">
-              <option value="">छान्नुहोस् / Select</option>
-              <option>MSMEs सह-लगानी कार्यक्रम</option>
-              <option>अन्य</option>
-            </select>
-          </label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>२. आवेदकको विवरण</h2>
-        <div class="grid two">
-          <label>संस्था/फर्म/कम्पनीको नाम *<input name="organization" required></label>
-          <label>दर्ता नं. *<input name="registration_no" required></label>
-          <label>दर्ता मिति<input type="date" name="registration_date"></label>
-          <label>PAN नं.<input name="pan"></label>
-          <label>सम्पर्क व्यक्ति *<input name="contact_person" required></label>
-          <label>पद<input name="position"></label>
-          <label>मोबाइल नं. *<input type="tel" name="phone" required></label>
-          <label>इमेल<input type="email" name="email"></label>
-          <label class="full">ठेगाना *<textarea name="address" rows="2" required></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>३. प्रस्तावित उप-परियोजनाको विवरण</h2>
-        <div class="grid two">
-          <label>उप-परियोजनाको नाम *<input name="project_name" required></label>
-          <label>जिल्ला *<input name="district" value="डडेलधुरा" required></label>
-          <label>स्थानीय तह<input name="local_level"></label>
-          <label>वडा नं.<input name="ward"></label>
-          <label class="full">मुख्य गतिविधि *
-            <select name="activity" required>
-              <option value="">छान्नुहोस् / Select</option>
-              <option>नर्सरी</option>
-              <option>श्रोत केन्द्र</option>
-              <option>जैविक उत्पादन सामग्री आपूर्ति</option>
-              <option>भण्डारण</option>
-              <option>प्रशोधन</option>
-              <option>बजारिकरण</option>
-              <option>कृषि पर्यटन</option>
-              <option>अन्य</option>
-            </select>
-          </label>
-          <label class="full">संक्षिप्त परिचय / Brief Description<textarea name="description" rows="4"></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>४. संस्थाको आर्थिक विवरण</h2>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>आर्थिक वर्ष</th><th>कुल कारोबार (रु.)</th><th>कैफियत</th></tr></thead>
-            <tbody>
-              <tr><td>२०८०/०८१</td><td><input type="number" min="0" name="turnover_2080"></td><td><input name="turnover_note_2080"></td></tr>
-              <tr><td>२०८१/०८२</td><td><input type="number" min="0" name="turnover_2081"></td><td><input name="turnover_note_2081"></td></tr>
-              <tr><td>२०८२/०८३</td><td><input type="number" min="0" name="turnover_2082"></td><td><input name="turnover_note_2082"></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>५. SWOT विश्लेषण</h2>
-        <div class="grid two">
-          <label>बलियो पक्ष / Strengths<textarea name="strengths" rows="4"></textarea></label>
-          <label>कमजोरी / Weaknesses<textarea name="weaknesses" rows="4"></textarea></label>
-          <label>अवसर / Opportunities<textarea name="opportunities" rows="4"></textarea></label>
-          <label>चुनौती / Threats<textarea name="threats" rows="4"></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>६. प्रस्तावित गतिविधि</h2>
-        <div id="activities">
-          <div class="activity-row">
-            <div class="activity-number">१</div>
-            <input name="activity_name[]" placeholder="गतिविधिको नाम">
-            <input name="activity_unit[]" placeholder="इकाई">
-            <input type="number" min="0" name="activity_qty[]" placeholder="परिमाण">
-            <input type="number" min="0" name="activity_rate[]" placeholder="दर">
-            <button type="button" class="remove-activity" aria-label="Remove">×</button>
-          </div>
-        </div>
-        <button type="button" class="add-btn" id="addActivity">＋ अर्को गतिविधि थप्नुहोस्</button>
-      </section>
-
-      <section class="form-section">
-        <h2>७. अपेक्षित परिणाम तथा सहयोग</h2>
-        <div class="grid two">
-          <label>अपेक्षित परिणाम<textarea name="expected_results" rows="4"></textarea></label>
-          <label>कार्यक्रमबाट अपेक्षित सहयोग<textarea name="support_required" rows="4"></textarea></label>
-          <label class="full">सह-लगानीको स्रोत<textarea name="coinvestment_source" rows="3"></textarea></label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>८. पेश गरेको कागजातहरू</h2>
-        <div class="check-grid">
-          <label><input type="checkbox" name="docs[]" value="citizenship"> नागरिकता / राष्ट्रिय परिचयपत्रको प्रतिलिपि</label>
-          <label><input type="checkbox" name="docs[]" value="registration"> दर्ता तथा नवीकरण प्रमाणपत्र</label>
-          <label><input type="checkbox" name="docs[]" value="pan"> PAN / कर चुक्ता प्रमाणपत्र</label>
-          <label><input type="checkbox" name="docs[]" value="agreement"> कच्चा पदार्थ/सेवा बिक्री सम्झौता</label>
-          <label><input type="checkbox" name="docs[]" value="audit"> लेखापरीक्षण प्रतिवेदन</label>
-          <label><input type="checkbox" name="docs[]" value="source"> सह-लगानी स्रोतको प्रमाण</label>
-          <label><input type="checkbox" name="docs[]" value="design"> पूर्वाधार डिजाइन/लागत अनुमान</label>
-          <label><input type="checkbox" name="docs[]" value="declaration"> अन्य अनुदान नलिएको स्वघोषणा</label>
-          <label><input type="checkbox" name="docs[]" value="schedule"> कार्यान्वयन कार्यतालिका</label>
-          <label><input type="checkbox" name="docs[]" value="other"> अन्य</label>
-        </div>
-      </section>
-
-      <section class="form-section">
-        <h2>९. लागत विवरण</h2>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>क्र.</th><th>गतिविधि</th><th>इकाई</th><th>परिमाण</th><th>दर</th><th>जम्मा</th><th>MSME लगानी</th><th>R-HVAP लगानी</th></tr></thead>
-            <tbody id="costRows">
-              <tr>
-                <td>१</td><td><input name="cost_activity[]"></td><td><input name="cost_unit[]"></td>
-                <td><input type="number" min="0" name="cost_qty[]"></td><td><input type="number" min="0" name="cost_rate[]"></td>
-                <td><input type="number" min="0" name="cost_total[]"></td><td><input type="number" min="0" name="msme_investment[]"></td><td><input type="number" min="0" name="rhvap_investment[]"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button type="button" class="add-btn" id="addCost">＋ अर्को लागत विवरण थप्नुहोस्</button>
-      </section>
-
-      <section class="form-section">
-        <h2>१०. घोषणा तथा सम्पर्क</h2>
-        <label class="declaration"><input type="checkbox" name="declaration" required> म/हामीले पेश गरेको विवरण सत्य रहेको र कार्यक्रमका शर्तहरू पालना गर्ने घोषणा गर्दछु/गर्दछौं। *</label>
-        <div class="grid two signature-grid">
-          <label>आवेदक/अधिकृत व्यक्तिको नाम *<input name="applicant_name" required></label>
-          <label>पद<input name="applicant_position"></label>
-        </div>
-      </section>
-
-      <section class="form-section upload-section">
-        <h2>११. कागजात अपलोड</h2>
-        <p class="muted">JPG, JPEG, PNG वा PDF मात्र। प्रत्येक फाइल अधिकतम 2 MB।</p>
-        <div class="upload-grid">
-          <label class="upload-card">कागजात १<input type="file" name="file1" accept=".jpg,.jpeg,.png,.pdf"></label>
-          <label class="upload-card">कागजात २<input type="file" name="file2" accept=".jpg,.jpeg,.png,.pdf"></label>
-          <label class="upload-card">कागजात ३<input type="file" name="file3" accept=".jpg,.jpeg,.png,.pdf"></label>
-          <label class="upload-card">कागजात ४<input type="file" name="file4" accept=".jpg,.jpeg,.png,.pdf"></label>
-          <label class="upload-card">कागजात ५<input type="file" name="file5" accept=".jpg,.jpeg,.png,.pdf"></label>
-        </div>
-      </section>
-
-      <div class="form-actions">
-        <button class="btn primary-btn" type="submit">✓ आवेदन पेश गर्नुहोस्</button>
-        <button class="btn secondary-btn" type="reset">फारम खाली गर्नुहोस्</button>
+    <div class="field-grid three">
+      <div class="field"><label>मिति</label><input type="date" name="form_date"></div>
+      <div class="field"><label>विन्डो छनोट <span class="req">*</span></label>
+        <select name="window_selection" required>
+          <option value="">छान्नुहोस्</option>
+          <option value="Window-2">Window-2</option>
+          <option value="Window-3">Window-3</option>
+        </select>
       </div>
-      <div id="formMessage" class="form-message" role="status"></div>
-    </form>
+      <div class="field"><label>आवेदन पेश गरेको मिति</label><input type="date" name="submission_date"></div>
+    </div>
+
+    <div class="letter">
+      <p><strong>श्रीमान कार्यालय प्रमुख ज्यू,</strong><br>
+      उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम (R-HVAP), PMO, डडेलधुरा ।</p>
+      <p><strong>विषयः</strong> सहलगानी कार्यक्रममा सहभागी हुन पाउँ सम्बन्धमा ।</p>
+      <p>महोदय,</p>
+      <p>उच्च मूल्य कृषि वस्तु उत्थानशील कार्यक्रम, कार्यक्रम व्यवस्थापन कार्यालय, डडेलधुराबाट
+      <input class="inline-field" type="date" name="notice_date" aria-label="सूचना प्रकाशित मिति">
+      मा प्रकाशित सूचना अनुसार लघु, साना तथा मझौला उद्योगहरु संग सहलगानी कार्यक्रम संचालन अन्तर्गत
+      सह-लगानी गरी
+      <input class="inline-field" style="min-width:280px" name="proposed_program_short" aria-label="कार्यक्रमको नाम">
+      कार्यक्रम संचालन गर्न इच्छुक भएकाले तपसिल बमोजिमको विवरण र क्रियाकलापहरु सहित कार्यक्रम संचालन गर्न यो निवेदन पेश गरेको छु/छौं।</p>
+      <p><strong>तपसिल</strong></p>
+    </div>
+
+    <h2 class="section-title">१. पेश गरेको कागजातहरु <span class="subnote">(ठिक ✓ लगाउनुहोस्)</span></h2>
+    <div class="doc-grid">
+      <label class="check-item"><input type="checkbox" name="doc_citizenship"> क. प्रस्तावकको नागरिकता/राष्ट्रिय परिचयपत्रको प्रमाणपत्रको प्रतिलिपि</label>
+      <label class="check-item"><input type="checkbox" name="doc_registration"> ख. संस्था दर्ता प्रमाणपत्र तथा नवीकरणको प्रतिलिपि</label>
+      <label class="check-item"><input type="checkbox" name="doc_pan"> ग. स्थायी लेखा नम्बर तथा कर चुक्ता पत्र</label>
+      <label class="check-item"><input type="checkbox" name="doc_agreement"> घ. वाली-वस्तु (कच्चा पदार्थ) वा सेवा बिक्रीको लागि उत्पादक समूह/सहकारी वा व्यवसायीसँग भएको सम्झौता/समझदारीको पत्र</label>
+      <label class="check-item"><input type="checkbox" name="doc_audit"> ङ. गत आर्थिक वर्षको लेखा परीक्षण प्रतिवेदन</label>
+      <label class="check-item"><input type="checkbox" name="doc_source"> च. सहलगानीको लागि स्रोत खुल्ने कागजात</label>
+      <label class="check-item"><input type="checkbox" name="doc_design"> छ. निर्माण गरिने पूर्वाधारको डिजाइन तथा इस्टिमेट</label>
+      <label class="check-item"><input type="checkbox" name="doc_declaration"> ज. प्रस्तावित लगानी कार्यक्रमको लागि अन्य दाताहरुबाट अनुदान लिएको वा लिन पहल भए नभएको स्वघोषणा</label>
+      <label class="check-item"><input type="checkbox" name="doc_schedule"> झ. लगानी कार्यक्रमको कार्यान्वयन तालिका</label>
+      <label class="check-item"><input type="checkbox" name="doc_other"> ञ. अन्य भए खुलाउने</label>
+    </div>
+    <div class="field" style="margin-top:10px"><label>अन्य कागजात भए खुलाउनुहोस्</label><textarea name="other_documents"></textarea></div>
+
+    <h2 class="section-title">२. निवेदकको संक्षिप्त विवरण</h2>
+    <div class="field-grid">
+      <div class="field"><label>फर्म/उद्यम/कम्पनी/संस्थाको नाम <span class="req">*</span></label><input name="applicant_org" required></div>
+      <div class="field"><label>अध्यक्ष/संचालकको नाम थर</label><input name="chairperson"></div>
+      <div class="field"><label>पद</label><input name="chairperson_position"></div>
+      <div class="field"><label>निवेदन पेश गरेको मिति</label><input type="date" name="applicant_submission_date"></div>
+      <div class="field"><label>सम्पर्क फोन नं. <span class="req">*</span></label><input type="tel" name="contact_phone" required></div>
+      <div class="field"><label>वैकल्पिक सम्पर्क व्यक्तिको नाम र सम्पर्क नं.</label><input name="alternate_contact"></div>
+      <div class="field full"><label>ठेगाना (पालिका/वडा/टोल सहित) <span class="req">*</span></label><textarea name="applicant_address" required></textarea></div>
+    </div>
+
+    <h2 class="section-title">३. उप-परियोजनाको सामान्य जानकारी</h2>
+    <div class="field-grid">
+      <div class="field full"><label>उप-परियोजनाको नाम <span class="req">*</span></label><input name="subproject_name" required></div>
+      <div class="field"><label>उप-परियोजनाको अवधि देखि</label><input type="date" name="project_from"></div>
+      <div class="field"><label>सम्म</label><input type="date" name="project_to"></div>
+      <div class="field"><label>कुल लगानी (अंकमा) <span class="req">*</span></label><input type="number" min="0" step="0.01" name="total_investment" required></div>
+      <div class="field"><label>कुल लगानी (शब्दमा)</label><input name="total_investment_words"></div>
+    </div>
+
+    <h2 class="section-title">४. आवेदकसम्बन्धी जानकारी</h2>
+    <div class="field-grid">
+      <div class="field"><label>संस्थाको नाम</label><input name="org_name_2"></div>
+      <div class="field"><label>दर्ता कार्यालय र दर्ता मिति</label><input name="registration_office_date"></div>
+      <div class="field"><label>स्थायी लेखा नम्बर (PAN)</label><input name="pan"></div>
+      <div class="field"><label>ठेगाना</label><input name="address_2"></div>
+      <div class="field"><label>सम्पर्क व्यक्ति र नम्बर</label><input name="contact_2"></div>
+      <div class="field"><label>इमेल</label><input type="email" name="email"></div>
+    </div>
+
+    <h2 class="section-title">५. संस्थाको परिचय</h2>
+    <p class="subnote">कानूनी स्थिति, अनुभव, हालका गतिविधिहरु, वार्षिक कारोबार, बजार पहुँच/सम्बन्ध, जनशक्ति आदि विवरण खुलस्त पार्नुहोस्।</p>
+    <table class="info-table">
+      <thead><tr><th class="num">क्र.सं.</th><th style="width:28%">विवरणको क्षेत्र</th><th>विस्तृत विवरण</th></tr></thead>
+      <tbody>
+        <tr><td class="num">१</td><td><strong>कानूनी स्थिति</strong><br>दर्ता प्रकार (प्राईभेट लिमिटेड/उद्योग/फर्म/साझेदारी)</td><td><textarea name="legal_status" rows="3"></textarea><input placeholder="दर्ता नम्बर र निकाय" name="registration_no_authority"></td></tr>
+        <tr><td class="num">२</td><td><strong>अनुभव</strong></td><td><label>सम्बन्धित क्षेत्र वा व्यवसायमा रहेको कार्य अनुभव (वर्षमा)</label><input type="number" min="0" step="0.1" name="experience_years"></td></tr>
+        <tr><td class="num">३</td><td><strong>हालका गतिविधिहरु</strong></td><td><label>संस्थाले हाल सञ्चालन गरिरहेका मुख्य मुख्य व्यवसायिक गतिविधि तथा उत्पादनहरु</label>
+          <textarea name="current_activities" rows="7" placeholder="• गतिविधि/उत्पादन १&#10;• गतिविधि/उत्पादन २&#10;• गतिविधि/उत्पादन ३&#10;• गतिविधि/उत्पादन ४&#10;• गतिविधि/उत्पादन ५"></textarea></td></tr>
+        <tr><td class="num">४</td><td><strong>वार्षिक कारोबार</strong><br>विगत ३ आर्थिक वर्षको कारोबार (रु)</td><td>
+          <div class="field-grid three">
+            <div class="field"><label>आ.व. २०८०/०८१</label><input type="number" min="0" step="0.01" name="turnover_2080"></div>
+            <div class="field"><label>आ.व. २०८१/०८२</label><input type="number" min="0" step="0.01" name="turnover_2081"></div>
+            <div class="field"><label>आ.व. २०८२/०८३</label><input type="number" min="0" step="0.01" name="turnover_2082"></div>
+          </div></td></tr>
+        <tr><td class="num">५</td><td><strong>बजार पहुँच/सम्बन्ध</strong></td><td><label>उत्पादन/सेवा बिक्री वितरण गर्ने मुख्य बजारहरु, क्रेता/सप्लायर्सहरुसँगको सम्बन्ध तथा सम्झौताको विवरण</label><textarea name="market_access" rows="7"></textarea></td></tr>
+        <tr><td class="num">६</td><td><strong>जनशक्ति</strong></td><td>
+          <div class="field-grid three">
+            <div class="field"><label>हाल कार्यरत कुल कर्मचारी/श्रमिक संख्या</label><input type="number" min="0" name="staff_total"></div>
+            <div class="field"><label>प्राविधिक जनशक्ति</label><input type="number" min="0" name="staff_technical"></div>
+            <div class="field"><label>प्रशासनिक/अन्य जनशक्ति</label><input type="number" min="0" name="staff_admin"></div>
+          </div></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">६. स्वट विश्लेषण (SWOT Analysis)</h2>
+    <div class="swot">
+      <div class="swot-box"><h3>सबल पक्ष</h3><textarea name="swot_strengths" aria-label="सबल पक्ष"></textarea></div>
+      <div class="swot-box"><h3>दुर्बल पक्ष</h3><textarea name="swot_weaknesses" aria-label="दुर्बल पक्ष"></textarea></div>
+      <div class="swot-box"><h3>अवसरहरु</h3><textarea name="swot_opportunities" aria-label="अवसरहरु"></textarea></div>
+      <div class="swot-box"><h3>चुनौतीहरु</h3><textarea name="swot_threats" aria-label="चुनौतीहरु"></textarea></div>
+    </div>
+
+    <h2 class="section-title">७. प्रस्तावित गतिविधिहरु</h2>
+    <div class="field"><label>संस्थाले के गर्न चाहन्छ र यसले संस्थाको कमजोरीहरु हटाउन तथा सबल पक्षको विकास गर्न कसरी मद्दत गर्दछ ?</label><textarea name="proposed_activities" rows="10"></textarea></div>
+
+    <h2 class="section-title">८. अपेक्षित प्रतिफल/उपलब्धीहरु</h2>
+    <textarea name="expected_results" rows="10"></textarea>
+
+    <h2 class="section-title">९. उत्पादक संस्था (PO) हरुलाई सहयोग</h2>
+    <div class="field"><label>उत्पादक संस्थाहरुलाई सहयोग गर्ने ढाँचा र सम्बन्ध/सञ्जाल (Modality of support and linkage)</label><textarea name="po_support" rows="10"></textarea></div>
+
+    <h2 class="section-title">१०. सह लगानी तथा पूर्वाधार विकास योजना</h2>
+    <div class="notice-box">मूल PDF मा क्रम संख्या १–८ का लागि तालिका छ। प्रत्येक पंक्तिमा <strong>कूल लागत = परिमाण × दर</strong> स्वतः गणना हुन्छ। MSME र R-HVAP contribution को योग कूल लागत बराबर राख्नुहोस्।</div>
+    <div class="cost-wrap">
+      <table class="cost-table" id="costTable">
+        <thead>
+          <tr>
+            <th rowspan="2" class="n">क्र.सं.</th>
+            <th rowspan="2" class="activity">गतिविधि</th>
+            <th rowspan="2" class="unit">एकाइ</th>
+            <th rowspan="2">परिमाण</th>
+            <th rowspan="2">दर (रु)</th>
+            <th rowspan="2">कूल लागत (रु)</th>
+            <th colspan="2">योगदान (Contribution)</th>
+          </tr>
+          <tr><th>MSME Co-investment</th><th>R-HVAP Co-investment</th></tr>
+        </thead>
+        <tbody id="costBody"></tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="5" style="text-align:right">जम्मा</td>
+            <td id="grandTotal">0.00</td>
+            <td id="msmeTotal">0.00</td>
+            <td id="rhvapTotal">0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h2 class="section-title">११. सह लगानी तथा पूर्वाधार विकास योजना</h2>
+    <div class="field"><label>आफ्नो सहलगानीको श्रोत के हो?</label><textarea name="coinvestment_source" rows="8"></textarea></div>
+
+    <h2 class="section-title">१२. घोषणा तथा हस्ताक्षर</h2>
+    <div class="letter">
+      <p>म घोषणा गर्दछु कि यस संस्थाले माथि उल्लेखित क्रियाकलापहरू सञ्चालन गर्न विगत ३ वर्षमा कुनैपनि सरकारी वा गैरसरकारी निकायबाट योगदान प्राप्त गरेको छैन।</p>
+    </div>
+    <div class="field-grid">
+      <div class="field"><label>नाम</label><input name="declarant_name"></div>
+      <div class="field"><label>पद</label><input name="declarant_position"></div>
+      <div class="field"><label>मिति</label><input type="date" name="declaration_date"></div>
+      <div class="field"><label>छाप</label><input type="text" name="stamp_note" placeholder="छाप लगाउने स्थान"></div>
+      <div class="field full"><label>हस्ताक्षर (डिजिटल प्रतिलिपि भए)</label><input type="file" name="signature_file" accept=".jpg,.jpeg,.png,.pdf"></div>
+    </div>
+
+    <div class="notice-box">
+      <strong>द्रष्टव्यः</strong> यो आशय पत्र छोटो सूचीमा स्वीकृत भएको अवस्थामा आशय पत्र दाताले व्यावसायिक योजना तयार गरी पेश गर्नुपर्नेछ।
+      त्यसरी पेश गरिने व्यावसायिक योजनामा यस आशय पत्रमा उल्लेख गरिएका कुरालाई पुष्टि गर्ने प्रमाण तथा विवरण
+      (वित्तीय क्षमता र सह-लगानीको प्रमाण, कुल लागत, बजार विश्लेषण, विस्तृत लागत अनुमान) समावेश गर्नुपर्नेछ।
+    </div>
+
+    <h2 class="section-title">पेश गरिने कागजातहरू — फाइल अपलोड</h2>
+    <p class="subnote">मूल PDF मा कागजात सूची checklist को रूपमा छ। Online submission मा वास्तविक files अन्तिम भागमा upload गर्न सकिने व्यवस्था राखिएको छ। प्रत्येक file अधिकतम 2 MB। JPG/JPEG/PNG/PDF मात्र।</p>
+    <div class="upload-grid">
+      <div class="upload-card"><label>नागरिकता/राष्ट्रिय परिचयपत्र</label><input type="file" name="upload_citizenship" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>दर्ता तथा नवीकरण</label><input type="file" name="upload_registration" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>PAN तथा कर चुक्ता</label><input type="file" name="upload_pan" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>सम्झौता/समझदारी पत्र</label><input type="file" name="upload_agreement" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>लेखा परीक्षण प्रतिवेदन</label><input type="file" name="upload_audit" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>सहलगानी स्रोत कागजात</label><input type="file" name="upload_source" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>डिजाइन तथा इस्टिमेट</label><input type="file" name="upload_design" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>स्वघोषणा/अन्य</label><input type="file" name="upload_other" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>कार्यान्वयन तालिका</label><input type="file" name="upload_schedule" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+      <div class="upload-card"><label>अन्य कागजात</label><input type="file" name="upload_extra" accept=".jpg,.jpeg,.png,.pdf"><small>Optional • max 2 MB</small></div>
+    </div>
+
+    <div id="successBox" class="success">
+      <strong>फारम जाँच सफल भयो।</strong><br>
+      अहिले यो demo/frontend version हो। Backend जोडिएपछि यहीँबाट data र files Google Sheets/Drive मा पठाउन सकिन्छ।
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-light" id="printBtn">🖨️ प्रिन्ट / PDF Save</button>
+      <button type="reset" class="btn-light">फारम खाली गर्नुहोस्</button>
+      <button type="submit" class="btn-main">आवेदन जाँच गर्नुहोस्</button>
+    </div>
+    <p class="small" style="text-align:center">Version 1.0 • Internal build</p>
   </div>
+  </form>
+</div>
 </main>
 
-<footer class="site-footer"><div class="container">
-  <p class="slogan">व्यवसायीक र सृजनशील प्रशासन: विकास, समृद्धि र शुसासन</p>
-  <p><a href="mailto:rhvap.sp@gmail.com">rhvap.sp@gmail.com</a> | <a href="https://pmorhvap.sudurpashchim.gov.np/" target="_blank" rel="noopener">pmorhvap.sudurpashchim.gov.np</a></p>
-</div></footer>
-<script src="js/script.js"></script>
-<script src="js/apply.js"></script>
+<script>
+(function(){
+  const form = document.getElementById('applicationForm');
+  const body = document.getElementById('costBody');
+  const rows = 8;
+
+  for(let i=1;i<=rows;i++){
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="n">${i}<input type="hidden" name="activity_${i}_no" value="${i}"></td>
+      <td><input class="activity" name="activity_${i}" placeholder="गतिविधि"></td>
+      <td><input name="unit_${i}" placeholder="एकाइ"></td>
+      <td><input type="number" min="0" step="0.01" class="qty" name="qty_${i}" data-row="${i}" placeholder="0"></td>
+      <td><input type="number" min="0" step="0.01" class="rate" name="rate_${i}" data-row="${i}" placeholder="0"></td>
+      <td class="calc" id="total_${i}">0.00<input type="hidden" name="total_${i}" value="0"></td>
+      <td><input type="number" min="0" step="0.01" class="msme" name="msme_${i}" data-row="${i}" placeholder="0"></td>
+      <td><input type="number" min="0" step="0.01" class="rhvap" name="rhvap_${i}" data-row="${i}" placeholder="0"></td>`;
+    body.appendChild(tr);
+  }
+
+  function num(v){const n=parseFloat(v);return Number.isFinite(n)?n:0}
+  function money(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+
+  function recalc(){
+    let grand=0, msme=0, rhvap=0;
+    for(let i=1;i<=rows;i++){
+      const q=num(form.elements['qty_'+i].value);
+      const r=num(form.elements['rate_'+i].value);
+      const t=q*r;
+      grand+=t; msme+=num(form.elements['msme_'+i].value); rhvap+=num(form.elements['rhvap_'+i].value);
+      document.getElementById('total_'+i).firstChild.textContent=money(t);
+      form.elements['total_'+i].value=t.toFixed(2);
+    }
+    document.getElementById('grandTotal').textContent=money(grand);
+    document.getElementById('msmeTotal').textContent=money(msme);
+    document.getElementById('rhvapTotal').textContent=money(rhvap);
+    return {grand,msme,rhvap};
+  }
+  form.addEventListener('input', recalc);
+
+  function validateFiles(){
+    const allowed=['application/pdf','image/jpeg','image/png'];
+    for(const input of form.querySelectorAll('input[type=file]')){
+      if(!input.files.length) continue;
+      const f=input.files[0];
+      if(f.size>2*1024*1024){
+        alert('फाइल 2 MB भन्दा ठूलो छ: '+f.name);
+        input.value=''; return false;
+      }
+      if(!allowed.includes(f.type)){
+        alert('गलत फाइल प्रकार। JPG, JPEG, PNG वा PDF मात्र छान्नुहोस्।');
+        input.value=''; return false;
+      }
+    }
+    return true;
+  }
+  form.addEventListener('change', e=>{
+    if(e.target.type==='file') validateFiles();
+  });
+
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const data=recalc();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    if(!validateFiles()) return;
+    if(data.msme+data.rhvap > data.grand+0.01){
+      alert('Contribution को योग कुल लागतभन्दा बढी हुन सक्दैन।');
+      return;
+    }
+    document.getElementById('successBox').style.display='block';
+    document.getElementById('successBox').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('printBtn').addEventListener('click',()=>window.print());
+
+  form.addEventListener('reset',()=>{
+    setTimeout(()=>{
+      recalc();
+      document.getElementById('successBox').style.display='none';
+      form.querySelectorAll('.error').forEach(x=>x.classList.remove('error'));
+    },0);
+  });
+  recalc();
+})();
+</script>
 </body>
 </html>
