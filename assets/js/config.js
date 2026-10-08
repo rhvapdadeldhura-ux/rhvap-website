@@ -9,4 +9,4 @@
 // This file is public on GitHub Pages.
 // ============================================================
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYMHG42ZhDQNpTihdJ6VUVp_T5l8Vwj1JqE8i2JpmCGF8xxBXrqi-hdCW-w1pk0qcO/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxD530O-nM7Ryoh8i9dd5H510GMMypVYf6wfkTjBVvIcJpm-shc93qtoD9sh5ZsAD_j/exec';
